@@ -47,7 +47,7 @@ tokens = ["error", "network", "token", "string", "exception", "test"]
 fuzzer = VBAF(
     vocabulary=tokens,
     n_size=50,
-    rand_bound=(3, 6)
+    rand_bounds=(3, 6)
 )
 
 # 3. Apply the decorator to your LLM inference function
