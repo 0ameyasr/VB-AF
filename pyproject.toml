@@ -24,3 +24,9 @@ where = ["src"]
 minversion = "8.0"
 addopts = "-ra -q"
 testpaths = ["tests"]
+
+[project.urls]
+Homepage = "https://0ameyasr.github.io/VB-AF/"
+Repository = "https://github.com/0ameyasr/VB-AF"
+Documentation = "https://0ameyasr.github.io/VB-AF/"
+Issues = "https://github.com/0ameyasr/VB-AF/issues"
