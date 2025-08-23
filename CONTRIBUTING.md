@@ -5,7 +5,7 @@ If you're reading this, thank you for considering to contribute to VB-AF. All co
 This document provides a set of guidelines for contributing to the project.
 
 ## How Can You Contribute?
-There are two primary ways:
+There are three primary ways:
 
 ### Reporting Bugs
 If you find a bug, please ensure it has not already been reported by searchng the existing [issues](https://github.com/0ameyasr/vb-af/issues).
@@ -28,7 +28,26 @@ If you have an idea for a new feature (e.g. a new fuzzer) or an enhancement to a
 3. Include any relevant code snippets or provide examples of how the feature would be used in practice.
 
 ### Submitting Pull Requests
-Here's how to set up your environment and submit a pull request:
+
+Pull Requests (PRs) are also welcome. However, to maintain the quality and consistency of the codebase, it is required that code contributions adhere to the following guidelines:
+
+1. Guiding Principles
+    - **Minimalism:** The core `vbaf` library should remain light-weight, focused, and free of heavy client-based abstractions or unnecessary dependencies. New features should be implemented with efficiency and simplicity in mind. Pythonic coding is heavily encouraged.
+    - **Consistency:** Code should adhere to the existing style and architectural patterns used throughout the project. This ensures the codebase remains readable and easy to maintain. For example, if you want to add a new fuzzer, you can do so by extending the `VBAF` class in `src/vbaf/fuzzers.py`, instead of first proposing to create a new module for the same.
+
+2. Code Formatting
+    - All Python code must be formatted with `black` using its default settings. Before submitting your pull request, please format your code:
+      
+        ```bash
+        pip install black
+        black .
+        ```
+       This ensures a consistent code style across the entire project.
+
+3. Documentation
+    - All new public classes, methods, and functions must include a comprehensive docstring following the **Google Python Style Guide**. Good documentation is crucial for making the tool accessible and maintainable. The docstrings should clearly explain the purpose of the code. It should document all arguments (Args:), return values (Returns:), and any errors that might be raised (Raises:). Include a concise, copy-pasteable code example if the function is user-facing.
+
+Once you've acknowledged the guidelines above, you can proceed to setup your environment and submit a pull request:
 
 1. Fork the repository
 2. Clone your fork: 
@@ -53,3 +72,4 @@ Here's how to set up your environment and submit a pull request:
 7. Write tests. Please add new tests in the tests/ directory to ensure it works as expected and prevent future regressions.
 8. Update documentation. If your changes affect the public API, please update the docstrings and any relevant files in the `docs/` directory.
 9. Submit the pull request - push your branch to your fork on GitHub and open a pull request to the `main` branch of the original repository. Provide a clear description of the changes you have made.
+
