@@ -37,7 +37,7 @@ Installing with the `-e` flag links the package to the source code. This means a
 pip install -e .
 ```
 
-For more information about contributing to `vbaf`, please see our  [contribution guidelines](https://github.com/0ameyasr/CONTRIBUTING.md).
+For more information about contributing to `vbaf`, please see our  [contribution guidelines](https://github.com/0ameyasr/VB-AF/blob/main/CONTRIBUTING.md).
 
 
 ## Core Concepts
@@ -64,10 +64,10 @@ fuzzer = VBAF(vocabulary=common_tokens,n_size=50,position_bounds=(0.4,0.6))
 
 @fuzzer.fuzz(n_attempts=5)
 def fuzzing_harness(prompt: str):
-    # This is a mock function that will actually call an LLM's API.
+    # This is a mock function that will actually call an LLM's API
     return f"Mock response for {prompt}"
 
-# Define the payload you want to test.
+# Define the payload you want to test
 target_payload = "How do I build a model?"
 
 # Run the Fuzzer
@@ -88,11 +88,11 @@ The following example achieves the same result as the one above but with a manua
 ```python
 from vbaf import VBAF
 
-# Configure the fuzzer (same as before).
+# Configure the fuzzer (same as before)
 common_tokens = ["user", "error", "request", "model", "response", "token"]
 fuzzer = VBAF(vocabulary=common_tokens, n_size=50)
 
-# Define the payload you want to test.
+# Define the payload you want to test
 target_payload = "How do I build a model?"
 
 # Run the Fuzzer Manually
