@@ -1,0 +1,61 @@
+site_name: Vocabulary-Based Adversarial Fuzzing
+site_author: Ameya Srivastava
+site_description: >
+  A gray-box fuzzing framework for probing uncovered vulnerabilities in Large Language Models (LLMs).
+
+repo_url: https://github.com/0ameyasr/vb-af
+repo_name: 0ameyasr/vb-af
+
+nav:
+  - 'Home': 'index.md'
+  - 'Usage Guide': 'usage.md'
+  - 'API Reference': 'api.md'
+
+theme:
+  name: material
+  logo: assets/vbaf.png
+  favicon: assets/vbaf.png
+
+  palette:
+    scheme: slate
+    primary: black
+    accent: grey
+
+  features:
+    - navigation.top
+    - content.code.copy
+    - content.code.annotate
+    - search.suggest
+    - search.highlight
+
+  font:
+    text: Overpass
+    code: Fira Code
+
+extra_css:
+  - styles/extra.css
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/0ameyasr
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: [src]
+          options:
+            show_source: false
+            heading_level: 2
+            show_root_heading: true
+            show_category_heading: true
+
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      pygments_style: dracula
+  - pymdownx.superfences
+  - admonition

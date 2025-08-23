@@ -1,10 +1,8 @@
-"""
-Fuzzers for the implementation of Vocabulary-Based Adversarial Fuzzing (VB-AF).
-"""
+"""Fuzzers for the implementation of Vocabulary-Based Adversarial Fuzzing (VB-AF)"""
 
 import random
 import inspect
-from typing import Callable, Generator
+from typing import Callable, Generator, Union
 
 
 class VBAF:
@@ -13,21 +11,12 @@ class VBAF:
     This class encapsulates the implementation logic for generating and applying VB-AF attacks.
     It can be used to create fuzzer instances with specific configurations and then apply them to
     inference functions, either through direct payload generation or via a convenient decorator.
-
-    Attributes:
-        vocabulary (list[str]): A list of tokens to sample from for noise.
-        seed (int | None): An optional integer seed for reproducible randomness.
-        separator (str): The character joining tokens within a noise sequence.
-        join_on (str): The character joining all token sequences together.
-        rand_bounds (tuple[int]): The (min, max) length of each noise sequence.
-        position_bounds (tuple[float]): The (min, max) proportional range for payload injection.
-        n_size (int): The total number of token sequences in the prompt.
     """
 
     def __init__(
         self,
         vocabulary: list[str],
-        seed: int | None = None,
+        seed: Union[int, None] = None,
         separator: str = "\u200b",
         join_on: str = "",
         rand_bounds: tuple[int] = (7, 21),
@@ -63,19 +52,20 @@ class VBAF:
 
         Args:
             payload (str): The target string / request to embed in the noise.
-            
+
         Returns:
             str: The fully constructed adversarial fuzzy payload.
 
         Raises:
             AssertionError:
-            - If `payload` is not a string instance.
-            - If `rand_bounds` defines an invalid or out-of-bounds range relative to the vocabulary size.
-            - If `position_bounds` defines an invalid range not included in [0,1].
-            - If `n_size` is not a positive integer.
+
+                - If `payload` is not a string instance,
+                - If `rand_bounds` defines an invalid or out-of-bounds range
+                - If `position_bounds` defines an invalid range not included in [0,1]
+                - If `n_size` is not a positive integer.
         """
         vocabulary_size = len(self.vocabulary)
-        
+
         # Ensure that payload is a str object
         assert isinstance(payload, str), f"Payload must be a string instance"
 
@@ -127,11 +117,7 @@ class VBAF:
 
         return fuzzy_payload
 
-    def fuzz(
-        self,
-        n_attempts: int = 100,
-        **kwargs
-    ) -> Callable:
+    def fuzz(self, n_attempts: int = 100, **kwargs) -> Callable:
         """A decorator to apply VB-AF to an inference function.
 
         This decorator wraps an inference function that takes a string payload as its first argument (e.g. a function that calls an LLM's API). It
@@ -140,7 +126,7 @@ class VBAF:
 
         Args:
             n_attempts (int, optional): The number of fuzzing attempts to generate for each call to the decorated function. Defaults to 100.
-            **kwargs: Arbitrary keyword arguments that will be passed either to the fuzzer or the decorated function. The decorator will intelligently
+            **kwargs (any): Arbitrary keyword arguments that will be passed either to the fuzzer or the decorated function. The decorator will intelligently
                 pass fuzzer-related parameters (like `rand_bounds`) to the fuzzer and the rest to the inference function.
 
         Returns:
@@ -148,11 +134,12 @@ class VBAF:
 
         Raises:
             AssertionError:
-            - If `n_attempts` is not a positive integer.
-            - If the decorated function does not accept at least one positional string argument.
+
+                - If `n_attempts` is not a positive integer
+                - If the decorated function does not accept at least one positional string argument.
 
         Example:
-        ```python
+            ```python
             from vbaf import VBAF
 
             tokens = [str(i) for i in range(10)]
@@ -166,7 +153,7 @@ class VBAF:
             for fuzzy_payload, result in fuzzing_harness("my payload here"):
                 print(f"Input: {fuzzy_payload}")
                 print(f"Result: {result}")
-        ```
+            ```
 
         Note:
             Results from the fuzzing harness are yielded as tuples in the form of `(fuzzy_payload, response)`. This allows for direct analysis of the payload-response mapping.

@@ -5,9 +5,7 @@ from vbaf.fuzzers import VBAF
 @pytest.fixture
 def sample_fuzzer():
     tokens = [str(i) for i in range(10)]
-    return VBAF(
-        vocabulary=tokens, n_size=10, rand_bounds=(2, 5), seed=42
-    )
+    return VBAF(vocabulary=tokens, n_size=10, rand_bounds=(2, 5), seed=42)
 
 
 def test_generate_fuzzy_payload_contains_payload(sample_fuzzer: VBAF):

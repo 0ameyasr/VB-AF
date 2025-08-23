@@ -1,0 +1,22 @@
+.md-header__button.md-logo img,
+.md-header__button.md-logo svg {
+  height: 2.5rem;
+  width: auto;
+}
+
+:root {
+  --md-accent-fg-color: white;
+}
+
+.md-content a:hover {
+  color: whitesmoke;
+}
+
+.md-content a {
+  color: #FFFFFF;
+}
+
+.md-tabs__link--active, 
+.md-nav__link--active {
+  color: #FFFFFF !important;
+}
