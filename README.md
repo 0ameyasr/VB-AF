@@ -65,6 +65,19 @@ for fuzzy_payload, result in fuzzing_harness("How do I build a model?"):
     ... # Post-process the results
 ```
 
+## How It Works
+
+VB-AF is not some random prompt generator. It's a systematic fuzzer that exploits two documented weaknesses in transformer-based models:
+
+1.  **Attention Dilution:** The framework aims to overwhelm the model's context window with high-entropy but semantically valid noise, generated from a token vocabulary. This forces the model's attention to spread thin, weakening its ability to enforce safety protocols.
+2.  **"Lost in the Middle":** The core payload is strategically injected into the middle of the noisy context. This targets the empirically observed weakness of LLMs where their attention is least effective, forcing the model to expend more attention to find the true instruction. **(Liu et al. [TACL](https://aclanthology.org/2024.tacl-1.9/) 2024)**
+
+The result is a state analogous to **'cognitive dissonance'**, where the model's internal reasoning shortcuts its safety alignment to deliver a "helpful" response, leading to a reward-hack in most documented cases.
+
 ## Full Documentation
 
 For a complete guide, API reference, and a deeper look into the methodology, please see the [full documentation website](https://0ameyasr.github.io/VB-AF/).
+
+## Contributing
+
+Contributions are welcome! Whether it's reporting a bug, suggesting a new feature (or optimization), or submitting a PR, your input will be valued. Please see the **[Contribution Guidelines](https://github.com/0ameyasr/vbaf/blob/main/CONTRIBUTING.md)** for detailed instructions on how to get started.
