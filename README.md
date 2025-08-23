@@ -1,6 +1,6 @@
 # VB-AF: Vocabulary-Based Adversarial Fuzzing
 
-<p align="center"><img src="https://github.com/0ameyasr/VB-AF/blob/main/docs/assets/vbaf.png" alt="VB-AF LOGO"/></p>
+<p align="center"><img src="https://raw.githubusercontent.com/0ameyasr/VB-AF/main/docs/assets/vbaf.png" alt="logo"/></p>
 
 An implementation of **Vocabulary-Based Adversarial Fuzzing (VB-AF)** to systematically probe vulnerabilities in Large Language Models (LLMs) at scale. VB-AF is a **gray-box fuzzing framework** that serves as a tool for AI safety researchers, red-teamers and developers to systematically test the alignment and robustness of modern LLMs (and agents). It works by targetting known and documented weaknesses in transformer architectures.
 
