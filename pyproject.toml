@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "vbaf"
-version = "0.1.0"
+version = "0.1.1"
 description = "Vocabulary-Based Adversarial Fuzzing (VB-AF) framework"
 authors = [
     { name = "Ameya Srivastava", email = "srivastava.ameya@gmail.com" }
