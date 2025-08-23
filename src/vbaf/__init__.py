@@ -1,3 +1,7 @@
-from .base import generate_fuzzy_payload, fuzz
+"""
+VB-AF: Vocabulary-Based Adversarial Fuzzing, a fuzzing framework for LLMs
+"""
 
-__all__ = ["base"]
+from .fuzzers import VBAF
+
+__all__ = ["VBAF"]
