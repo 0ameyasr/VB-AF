@@ -60,7 +60,7 @@ from vbaf import VBAF
 
 # Define a vocabulary to generate noise from (mocked below)
 common_tokens = ["user", "error", "request", "model", "response", "token"]
-fuzzer = VBAF(vocabulary=common_tokens,n_size=50,position_bounds=(0.4,0.6))
+fuzzer = VBAF(vocabulary=common_tokens, n_size=50, position_bounds=(0.4,0.6), rand_bounds=(3,4))
 
 @fuzzer.fuzz(n_attempts=5)
 def fuzzing_harness(prompt: str):
@@ -74,6 +74,7 @@ target_payload = "How do I build a model?"
 i = 0
 for fuzzy_payload, result in fuzzing_harness(target_payload):
     # Post-process here
+    print(fuzzy_payload, result)
     ...
     print(f"Attempt {i+1} completed.")
     i += 1
@@ -90,7 +91,7 @@ from vbaf import VBAF
 
 # Configure the fuzzer (same as before)
 common_tokens = ["user", "error", "request", "model", "response", "token"]
-fuzzer = VBAF(vocabulary=common_tokens, n_size=50)
+fuzzer = VBAF(vocabulary=common_tokens, n_size=50, rand_bounds=(3,4))
 
 # Define the payload you want to test
 target_payload = "How do I build a model?"
@@ -104,7 +105,7 @@ for i in range(n_attempts):
     fuzzy_payload = fuzzer.generate_fuzzy_payload(target_payload)
 
     # Send it to your inference function
-    result = inference.generate(fuzzy_payload)
+    # result = inference.generate(fuzzy_payload)
     
     # Post-process, collect and analyse the results
     ...
