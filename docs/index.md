@@ -39,7 +39,7 @@ The author(s) is(are) **not responsible** for any damage caused by the misuse of
 
 ## Getting Started
 
-Before you use this tool, **you absolutely must acknowledge the previous disclaimer**. Following that, to begin using VB-AF
+Before you use this tool, **you absolutely must acknowledge the previous disclaimer**. Following that, to begin using VB-AF, start with the following links:
 
 * **[Usage Guide](./usage.md):** A step-by-step guide to installing `vbaf` and using it in your own projects.
 * **[API Reference](./api.md):** Detailed documentation for the fuzzers (e.g. base `VBAF`) included and their methods.
