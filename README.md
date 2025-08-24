@@ -21,7 +21,7 @@ By continuing to use this tool, you expressly acknowledge and accept full person
 
 1. Intuitive, easy-to-use API balancing both un-interrupted low-level control and convenient high-level fuzzing harness decoration.
 2. Built-in support for random seeding to ensure experiments are fully reproducible.
-3. Designed to expose deep, uncovered vulnerabilities in a model's Chain-of-Thought reasoning, not just surface-level filter bypasses.
+3. Designed to expose even deep, uncovered vulnerabilities in a model's Chain-of-Thought (CoT) reasoning, not just surface-level filter bypasses; though it's reach is not restricted to this.
 4. Moves beyond simple role-playing jailbreak prompts to a systematic, scalable and highly configurable fuzzing framework.
 5. Open to community and research contributions!
 
@@ -47,7 +47,7 @@ tokens = ["error", "network", "token", "string", "exception", "test"]
 fuzzer = VBAF(
     vocabulary=tokens,
     n_size=50,
-    rand_bounds=(3, 6)
+    rand_bounds=(3, 5)
 )
 
 # 3. Apply the decorator to your LLM inference function
@@ -80,4 +80,4 @@ For a complete guide, API reference, and a deeper look into the methodology, ple
 
 ## Contributing
 
-Contributions are welcome! Whether it's reporting a bug, suggesting a new feature (or optimization), or submitting a PR, your input will be valued. Please see the **[Contribution Guidelines](https://github.com/0ameyasr/vbaf/blob/main/CONTRIBUTING.md)** for detailed instructions on how to get started.
+Contributions are welcome! Whether it's reporting a bug, suggesting a new feature, optimization, improving the docs, or submitting a PR - your input will be valued. Please see the **[Contribution Guidelines](https://github.com/0ameyasr/VB-AF/blob/main/CONTRIBUTING.md)** for detailed instructions on how to get started.
