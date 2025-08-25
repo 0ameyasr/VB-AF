@@ -147,7 +147,7 @@ class VBAF:
 
             @fuzzer.fuzz(n_attempts=3)
             def fuzzing_harness(prompt: str):
-                # Realistically, this would call and LLM API
+                # Realistically, this would call an LLM's API
                 return f"Mock response for: {prompt}"
 
             for fuzzy_payload, result in fuzzing_harness("my payload here"):
